@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "minLength": 2,
+      "maxLength": 100
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "inStock": {
+      "type": "boolean",
+      "default": true
+    },
+    "enquiry": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::enquiry.enquiry",
+      "mappedBy": "product"
+    }
+  }
+}

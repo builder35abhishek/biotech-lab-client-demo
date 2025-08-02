@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "enquiries",
+  "info": {
+    "singularName": "enquiry",
+    "pluralName": "enquiries",
+    "displayName": "Enquiry"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "text",
+      "required": true,
+      "minLength": 2,
+      "maxLength": 100
+    },
+    "phone": {
+      "type": "text",
+      "required": true,
+      "minLength": 8,
+      "maxLength": 15
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "message": {
+      "type": "richtext",
+      "required": true,
+      "maxLength": 2000
+    },
+    "current": {
+      "type": "enumeration",
+      "enum": ["new", "in-progress", "closed"],
+      "default": "new"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product",
+      "inversedBy": "enquiry"
+    }
+  }
+}
